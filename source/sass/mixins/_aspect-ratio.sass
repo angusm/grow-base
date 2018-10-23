@@ -1,0 +1,15 @@
+=min-aspect($width, $height)
+  @media (min-aspect-ratio: #{$width}/#{$height})
+    @content
+
+=wide-viewport
+  +min-aspect(1, 1)
+    @content
+
+=max-aspect($width, $height)
+  @media (max-aspect-ratio: #{$width}/#{$height})
+    @content
+
+=tall-viewport
+  +max-aspect(1, 1)
+    @content
