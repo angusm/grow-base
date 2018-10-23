@@ -1,0 +1,24 @@
+<script>
+{%- set routed_collections = [] -%}
+{%- for raw_collection in podspec.routed_collections -%}
+  {%- do routed_collections.append('/content/' + raw_collection) -%}
+{%- endfor -%}
+
+angular.module('main')
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.hashPrefix('!');
+  $routeProvider
+    {%- for routed_collection in routed_collections -%}
+      {%- for page in g.docs(routed_collection) -%}
+        {%- set base_doc = page.base_doc or g.doc('/content/pages/' + page.pod_path.split('/')[-1]) -%}
+        .when('{{base_doc.url.path}}', {
+          templateUrl: '{{page.url.path}}',
+          controller: '{{base_doc.ng_controller}}',
+          controllerAs: 'pageCtrl',
+        })
+      {%- endfor -%}
+    {%- endfor -%}
+    .otherwise('/');
+  $locationProvider.html5Mode(true);
+  }]);
+</script>

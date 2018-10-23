@@ -7,6 +7,9 @@ home: /content/pages/home.yaml
 localization:
   default_locale: en
 
+routed_collections:
+  - ng-route-templates
+
 meta:
   google_analytics_id: ""
   google_site_verification: ""

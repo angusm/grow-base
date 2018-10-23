@@ -1,10 +1,8 @@
-import {Sample} from "./sample/sample";
+import {BaseController} from "./ng/controllers/base";
+import {BController} from "./ng/controllers/b";
+import {AController} from "./ng/controllers/a";
 
-class Main {
-  constructor() {
-    console.log('Yo!');
-    new Sample();
-  }
-}
-
-new Main();
+angular.module('main', ['ngRoute'])
+  .controller('BaseController', BaseController)
+  .controller('AController', AController)
+  .controller('BController', BController);

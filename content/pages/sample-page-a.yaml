@@ -1,9 +1,9 @@
-$title: Home
-$path: /{root}/
+$title: Sample Page A
+$path: /{root}/a
 $order: -1
 description: A basic Grow demo website.
 
-ng_controller: BaseController
+ng_controller: AController
 
 partials:
 - partial: nav

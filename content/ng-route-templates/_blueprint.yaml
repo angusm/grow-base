@@ -1,0 +1,2 @@
+view: /views/ng-template.html
+path: /{root}/{base}/template.html

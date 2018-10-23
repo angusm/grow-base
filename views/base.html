@@ -1,5 +1,6 @@
+{%- import "/partials/macros/render-doc.html" as render_doc with context -%}
 <!DOCTYPE html>
-<html lang="{{doc.locale}}">
+<html lang="{{doc.locale}}" ng-app="main">
   <head>
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -24,29 +25,20 @@
     {% endif %}
 
     <link href="{{ g.static('/dist/css/main.min.css').url.path }}" rel="stylesheet">
+    <base href="/">
   </head>
   <body>
-    <div class="wrapper">
-      {% block main %}
-        {% if doc.partials %}
-          {% for field in doc.partials %}
-            {% if not field.partial %}
-              {% continue %}
-            {% endif %}
-
-            {# Render the partial with the values in {{partial}}. #}
-            {% set partial_filename = '/partials/' + field.partial + '.html' %}
-            {% with partial = field %}
-              {% include partial_filename with context %}
-            {% endwith %}
-          {% endfor %}
-        {% else %}
-          {{doc.formatted|safe}}
-        {% endif %}
-      {% endblock %}
+    <div class="header">Base Header</div>
+    <div class="wrapper" ng-view>
     </div>
+    <div class="footer">Base Footer</div>
 
+    {% set angular_version = '1.6.10' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{angular_version}}/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{angular_version}}/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{angular_version}}/angular-animate.min.js"></script>
     <script src="{{ g.static('/dist/js/main.min.js').url.path }}"></script>
+    {%- include "/partials/global/routes.html" with context -%}
 
     {% if podspec.meta.google_analytics_id %}
       <script>
