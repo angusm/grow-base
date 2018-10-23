@@ -1,0 +1,50 @@
+// Breakpoints
+$_width-sm: 460px
+$_width-md: 768px
+$_width-lg: 1024px
+$_width-xl: 1144px
+$_width-xxl: 1230px
+
+=gt($width)
+  @media (min-width: $width)
+    @content
+
+=lt($width)
+  @media (max-width: $width - 1)
+    @content
+
+=sm
+  +gt($_width-sm)
+    @content
+=md
+  +gt($_width-md)
+    @content
+=lg
+  +gt($_width-lg)
+    @content
+=xl
+  +gt($_width-xl)
+    @content
+=xxl
+  +gt($_width-xxl)
+    @content
+
+=sm-lt
+  +lt($_width-sm)
+    @content
+
+=md-lt
+  +lt($_width-md)
+    @content
+
+=lg-lt
+  +lt($_width-lg)
+    @content
+
+=xl-lt
+  +lt($_width-xl)
+    @content
+
+=xxl-lt
+  +lt($_width-xxl)
+    @content
