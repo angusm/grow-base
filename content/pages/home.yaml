@@ -1,0 +1,7 @@
+$title: Home
+$path: /{root}/
+$order: -1
+description: A basic Grow demo website.
+
+partials:
+- partial: hero

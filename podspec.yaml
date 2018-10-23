@@ -1,0 +1,34 @@
+grow_version: ">=0.2.5"
+
+title: "Site Title"
+
+home: /content/pages/home.yaml
+
+localization:
+  default_locale: en
+
+meta:
+  google_analytics_id: ""
+  google_site_verification: ""
+  image_path: ""
+  favicon_path: /static/images/favicon.png
+  social:
+    twitter: example
+    facebook: example
+
+preprocessors:
+- kind: gulp
+  build_task: grow-build
+
+static_dirs:
+- static_dir: /static/
+  serve_at: /static/
+- static_dir: /dist/css/
+  serve_at: /css/
+  fingerprinted: true
+- static_dir: /dist/js/
+  serve_at: /js/
+  fingerprinted: true
+
+sitemap:
+  enabled: true
