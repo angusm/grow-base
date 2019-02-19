@@ -6,6 +6,13 @@ home: /content/pages/home.yaml
 
 localization:
   default_locale: en
+  locales:
+    - en_ca
+    - fr_ca
+    - fr_fr
+    - ko_ko
+    - ko
+    - de_au
 
 routed_collections:
   - ng-route-templates
@@ -20,7 +27,8 @@ meta:
     facebook: example
 
 preprocessors:
-- kind: gulp
+- name: gulp
+  kind: gulp
   build_task: grow-build
 
 static_dirs:

@@ -1,2 +1,4 @@
-view: /views/ng-template.html
-path: /{root}/{base}/template.html
+$view: /views/ng-template.html
+$path: /{root}/{base}/template/
+$localization:
+  path: /{locale}/{root}/{base}/template/
