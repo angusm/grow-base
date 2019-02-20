@@ -10,7 +10,7 @@
     "gulp-autoprefixer": "^6.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
-    "toolbox-v2": "git+https://github.com/angusm/toolbox-v2.git#f1a208fdb70513c6c1983913d48554ebf5c698bf",
+    "toolbox-v2": "git+https://github.com/angusm/toolbox-v2.git#9075695d169c285a9b6066a982922e3695e910ca",
     "webpack": "4.20.2",
     "webpack-stream": "5.1.1"
   }
