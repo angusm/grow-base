@@ -38,7 +38,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{angular_version}}/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/{{angular_version}}/angular-animate.min.js"></script>
     <script src="{{ g.static('/dist/js/main.min.js').url.path }}"></script>
-    {%- include "/partials/global/routes.html" with context -%}
 
     {% if podspec.meta.google_analytics_id %}
       <script>
