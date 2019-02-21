@@ -85,7 +85,7 @@ gulp.task("watch-sass", function() {
 gulp.task("compile-ts", ["clear-old-ts", "build-new-ts"]);
 
 gulp.task("clear-old-ts", function() {
-  exec("rm -rf ./dist/js/*.js");
+  exec("rm -rf ./tmp/**/*.js");
 });
 
 gulp.task("build-new-ts", function() {
