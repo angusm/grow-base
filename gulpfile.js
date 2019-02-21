@@ -10,14 +10,14 @@ var webpack = require("webpack");
 var webpackStream = require("webpack-stream");
 
 var config = {
-  JS_SOURCE_FILE: "./source/js/main.js",
-  JS_SOURCES: ["./partials/**/*.js", "./source/js/**/*.js"],
-  JS_OUT_DIR: "./dist/js/",
-  JS_OPTIONS: {
-    uglify: {
-      mangle: false
-    }
-  },
+  // JS_SOURCE_FILE: "./source/js/main.js",
+  // JS_SOURCES: ["./partials/**/*.js", "./source/js/**/*.js"],
+  // JS_OUT_DIR: "./dist/js/",
+  // JS_OPTIONS: {
+  //   uglify: {
+  //     mangle: false
+  //   }
+  // },
   SASS_SOURCE_FILE: "./global/main.sass",
   SASS_SOURCES: ["./global/*.{sass,scss}", "./components/**/*.{sass,scss}"],
   SASS_OUT_DIR: "./dist/css/"
@@ -40,21 +40,21 @@ var webpackProdConfig = extend(
   webpackConfig
 );
 
-gulp.task("compile-js", function() {
-  return gulp
-    .src(config.JS_SOURCES)
-    .pipe(webpackStream(webpackProdConfig, webpack))
-    .pipe(gulp.dest(config.JS_OUT_DIR));
-});
+// gulp.task("compile-js", function() {
+//   return gulp
+//     .src(config.JS_SOURCES)
+//     .pipe(webpackStream(webpackProdConfig, webpack))
+//     .pipe(gulp.dest(config.JS_OUT_DIR));
+// });
 
-gulp.task("watch-js", () => {
-  webpackConfig.watch = true;
+// gulp.task("watch-js", () => {
+//   webpackConfig.watch = true;
 
-  gulp
-    .src(config.JS_SOURCES)
-    .pipe(webpackStream(webpackConfig, webpack))
-    .pipe(gulp.dest(config.JS_OUT_DIR));
-});
+//   gulp
+//     .src(config.JS_SOURCES)
+//     .pipe(webpackStream(webpackConfig, webpack))
+//     .pipe(gulp.dest(config.JS_OUT_DIR));
+// });
 
 gulp.task("compile-sass", function() {
   gulp
@@ -82,6 +82,20 @@ gulp.task("watch-sass", function() {
   gulp.watch(config.SASS_SOURCES, ["compile-sass"]);
 });
 
-gulp.task("build", ["compile-js", "compile-sass"]);
-gulp.task("grow-build", ["compile-js", "compile-sass"]);
-gulp.task("default", ["watch-js", "compile-sass", "watch-sass"]);
+gulp.task("compile-ts", ["clear-old-ts", "build-new-ts"]);
+
+gulp.task("clear-old-ts", function() {
+  exec("rm -rf ./dist/js/*.js");
+});
+
+gulp.task("build-new-ts", function() {
+  exec("tsc -p ./");
+});
+
+// gulp.task("build", ["compile-js", "compile-sass"]);
+// gulp.task("grow-build", ["compile-js", "compile-sass"]);
+// gulp.task("default", ["watch-js", "compile-sass", "watch-sass"]);
+
+gulp.task("build", ["compile-sass"]);
+gulp.task("grow-build", ["compile-sass"]);
+gulp.task("default", ["compile-sass", "watch-sass"]);
