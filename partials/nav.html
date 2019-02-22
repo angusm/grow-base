@@ -1,17 +1,1 @@
-{%- set base_doc = doc.base_doc or g.doc('/content/pages/' + doc.pod_path.split('/')[-1]) -%}
-<div>Pod Path: {{doc.pod_path}}</div>
-<div>Title: {{base_doc.title}}</div>
-<div>Controller Name: <span ng-bind="pageCtrl.name"></span></div>
-
-{%- set routed_collections = [] -%}
-{%- for raw_collection in podspec.routed_collections -%}
-  {%- do routed_collections.append('/content/' + raw_collection) -%}
-{%- endfor -%}
-<ul>
-{%- for routed_collection in routed_collections -%}
-  {%- for page in g.docs(routed_collection) -%}
-    {%- set base_doc = page.base_doc or g.doc('/content/pages/' + page.pod_path.split('/')[-1]) -%}
-    <li><a href="{{base_doc.url.path}}">{{base_doc.pod_path}}</a></li>
-  {%- endfor -%}
-{%- endfor -%}
-</ul>
+<nav>I should totally be a nav.</nav>

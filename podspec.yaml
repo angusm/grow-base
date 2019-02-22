@@ -14,9 +14,6 @@ localization:
     - ko
     - de_au
 
-routed_collections:
-  - ng-route-templates
-
 meta:
   google_analytics_id: ""
   google_site_verification: ""

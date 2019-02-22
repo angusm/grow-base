@@ -1,3 +1,0 @@
-{%- import "/partials/macros/render-doc.html" as render_doc with context -%}
-{%- set base_doc = doc.base_doc or g.doc('/content/pages/' + doc.pod_path.split('/')[-1]) -%}
-{{render_doc.render_doc(base_doc)}}
