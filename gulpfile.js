@@ -72,25 +72,31 @@ const compileSass = () => {
 };
 gulp.task("compile-sass", compileSass);
 
-const watchSass = () => gulp.watch(config.SASS_SOURCES, ["compile-sass"]);
+const watchSass = () => gulp.watch(config.SASS_SOURCES, compileSass);
 gulp.task("watch-sass", watchSass);
 
-const clearOldTs = (done) =>{
-  exec("rm -rf ./tmp/js/*");
-  done();
+const watchTs = () => gulp.watch(config.TS_SOURCES, compileTs);
+gulp.task("watch-ts", watchTs);
+
+const clearOldTs = () =>{
+  return gulp.src('./tmp/js', {allowEmpty: true})
+      .pipe(exec('rm -rf <%= file.path %>'));
 };
 gulp.task("clear-old-ts", clearOldTs);
 
-const buildNewTs = (done) => {
-  gulp.src('./tsconfig.json')
+const buildNewTs = () => {
+  return gulp.src('./tsconfig.json')
       .pipe(exec('tsc -p <%= file.path %>'));
-  done();
 };
 gulp.task("build-new-ts", buildNewTs);
 
-const compileTs = gulp.series(clearOldTs, buildNewTs, compileJs, clearOldTs);
+const sleep = (done) => {
+  exec('sleep 10');
+  done();
+};
+const compileTs = gulp.series(clearOldTs, buildNewTs, sleep, compileJs);
 gulp.task("compile-ts", compileTs);
 
 gulp.task("build", gulp.parallel(compileSass, compileTs));
 gulp.task("grow-build", gulp.parallel(compileSass));
-gulp.task("default", gulp.parallel(compileSass, watchSass));
+gulp.task("default", gulp.parallel(compileSass, compileTs, watchSass, watchTs));
