@@ -4,5 +4,5 @@ description: A basic Grow demo website.
 
 ng_controller: BController
 
-partials:
-- partial: nav
+components:
+- component: nav

@@ -1,0 +1,16 @@
+{% macro render_doc(doc_to_render) %}
+  {% if doc_to_render.components %}
+    {% for field in doc_to_render.components %}
+      {% if not field.component %}
+        {% continue %}
+      {% endif %}
+
+      {% set component_filename = '/components/' + field.component + '/' + field.component.split('/')[-1] + '.html' %}
+      {% with component = field %}
+        {% include component_filename with context %}
+      {% endwith %}
+    {% endfor %}
+  {% else %}
+    {{doc_to_render.formatted|safe}}
+  {% endif %}
+{% endmacro %}
