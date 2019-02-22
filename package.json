@@ -6,11 +6,12 @@
     "babili-webpack-plugin": "^0.1.2",
     "deep-extend": "^0.6.0",
     "fs-readdir-recursive": "^1.1.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
+    "gulp-exec": "^3.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
-    "toolbox-v2": "git+https://github.com/angusm/toolbox-v2.git#9075695d169c285a9b6066a982922e3695e910ca",
+    "toolbox-v2": "git+https://github.com/angusm/toolbox-v2.git#ab64e15b1e99ec3edbffc0d7d835d1d6064ca021",
     "webpack": "4.20.2",
     "webpack-stream": "5.1.1"
   }

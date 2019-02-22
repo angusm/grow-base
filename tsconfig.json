@@ -6,7 +6,7 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "target": "es5",
-    "outDir": "./tmp/",
+    "outDir": "./tmp/js/",
     "module": "es6"
   }
 }
